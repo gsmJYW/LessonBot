@@ -57,8 +57,6 @@ namespace OthelloBot.src.command
                     response = await new HttpClient().GetAsync($"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId={playlistID}&key={Program.youtube_api_key}");
                     json = await response.Content.ReadAsStringAsync();
 
-                    Console.WriteLine(json);
-
                     long last_upload;
 
                     try
@@ -71,7 +69,7 @@ namespace OthelloBot.src.command
                         last_upload = 0;
                     }
 
-                    if (DB.UpdateYoutubeChannel(channel_id, last_upload) <= 0)
+                    if (DB.UpdateYoutubeChannel(channel_id, channel.items[0].snippet.title, last_upload) <= 0)
                     {
                         throw new Exception();
                     }
