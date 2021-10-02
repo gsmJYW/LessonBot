@@ -17,6 +17,7 @@ namespace IzoneBot.src.model
         public string title { get; set; }
         public DateTime publishedAt { get; set;  }
         public ResourceId resourceId { get; set; }
+        public string channelTitle { get; set; }
     }
 
     public class ResourceId
