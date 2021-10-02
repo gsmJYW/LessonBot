@@ -2,6 +2,7 @@
 using OthelloBot.src.db;
 using OthelloBot.src.embed;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace OthelloBot.src.command
 {
