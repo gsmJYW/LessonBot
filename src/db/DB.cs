@@ -82,12 +82,12 @@ namespace OthelloBot.src.db
             }
         }
 
-        public static int UpdateYoutubeChannel(string channelID, long last_upload)
+        public static int UpdateYoutubeChannel(string channelID, string name, long last_upload)
         {
             using var conn = new MySqlConnection(connStr);
             conn.Open();
 
-            string query = $"REPLACE INTO youtube_channel (id, last_upload) VALUES('{channelID}', {last_upload})";
+            string query = $"REPLACE INTO youtube_channel (id, name, last_upload) VALUES('{channelID}', '{name}', {last_upload})";
             using var cmd = new MySqlCommand(query, conn);
 
             return cmd.ExecuteNonQuery();
