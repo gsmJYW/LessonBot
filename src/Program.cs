@@ -45,10 +45,7 @@ namespace OthelloBot
             }
             catch
             {
-                Console.WriteLine(
-                    @"프로그램 실행 시 다음 매개변수가 필요합니다:
-                    [명령어 접두사] [봇 토큰] [유튜브 API 키] [MySQL Server] [MySQL Port] [MySQL Database] [MySQL UID] [MySQL PWD]"
-                );
+                Console.WriteLine("프로그램 실행 시 다음 매개변수가 필요합니다:\n[명령어 접두사] [봇 토큰] [유튜브 API 키] [MySQL Server] [MySQL Port] [MySQL Database] [MySQL UID] [MySQL PWD]\n");
                 return;
             }
 
@@ -142,7 +139,7 @@ namespace OthelloBot
                 {
                     name = "유리";
                 }
-                else if (hour == 10 && minute == 34)
+                else if (hour == 10 && minute == 29)
                 {
                     name = "데뷔";
                 }
