@@ -218,7 +218,7 @@ namespace OthelloBot
                             }
                         }
 
-                        if (tickList.Count > 0 && DB.UpdateYoutubeChannel(row["id"].ToString(), tickList[0]) <= 0)
+                        if (tickList.Count > 0 && DB.UpdateYoutubeChannel(row["id"].ToString(), playlistItems.items[0].snippet.channelTitle, tickList[0]) <= 0)
                         {
                             throw new Exception();
                         }
@@ -265,7 +265,7 @@ namespace OthelloBot
             var message = arg as SocketUserMessage;
             var context = new ShardedCommandContext(_client, message);
 
-            if (message == null || message.Author.IsBot || message.Channel is not SocketGuildChannel || !(message.Author as SocketGuildUser).GuildPermissions.Administrator)
+            if (message == null || message.Author.IsBot || message.Channel is not SocketGuildChannel)
             {
                 return;
             }
@@ -276,7 +276,6 @@ namespace OthelloBot
             {
                 if (!(message.Author as SocketGuildUser).GuildPermissions.Administrator)
                 {
-                    Console.WriteLine("asdf");
                     await message.Channel.SendMessageAsync("**관리자**만 사용할 수 있습니다.");
                     return;
                 }
