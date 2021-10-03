@@ -264,7 +264,7 @@ namespace OthelloBot
             var message = arg as SocketUserMessage;
             var context = new ShardedCommandContext(_client, message);
 
-            if (message == null || message.Author.IsBot || message.Channel is not SocketGuildChannel)
+            if (message == null || message.Author.IsBot || message.Channel is not SocketGuildChannel || !(message.Author as SocketGuildUser).GuildPermissions.Administrator)
             {
                 return;
             }
@@ -273,12 +273,6 @@ namespace OthelloBot
 
             if (message.HasStringPrefix(prefix, ref argPos))
             {
-                if (!(message.Author as SocketGuildUser).GuildPermissions.Administrator)
-                {
-                    await message.Channel.SendMessageAsync("**관리자**만 사용할 수 있습니다.");
-                    return;
-                }
-
                 var result = await _commands.ExecuteAsync(context, argPos, _services);
 
                 if (!result.IsSuccess)
